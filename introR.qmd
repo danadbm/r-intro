@@ -1,0 +1,449 @@
+---
+title: "Intro to R"
+author: "DAPT 617 ANALYTICS COMPUTING I"
+format: 
+  revealjs:
+    self-contained: true
+    theme: simple
+execute: 
+  echo: false
+  error: true
+
+editor: visual
+---
+
+## 
+
+![](excelcrash.png)
+
+## Welcome to Analytics Computing! {.smaller}
+
+![](analyticscomput.png)
+
+## Let's Jam {.smaller}
+
+Post your thoughts...
+
+<https://jamboard.google.com/d/1LpJL4xq66UWPS0LVQ7gKJ2qKj5q-ivQetItGH26urls/edit?usp=sharing>
+
+![](jam.png)
+
+## Course Goal: Add a new tool to your data science toolkit {.smaller}
+
+![](crisp.png)
+
+## Why R? {.smaller}
+
+-   It's free!
+-   R & Python are top skills for data science, engineering, machine learning; extremely advantageous for analysts
+-   [Data Visualization](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
+[![](https://github.com/thomasp85/gganimate/raw/main/man/figures/README-unnamed-chunk-4-1.gif){fig-align="left" width="450"}](https://github.com/thomasp85/gganimate)
+
+-   Big community of R Users and contributed packages
+
+## Why not R? {.smaller}
+
+![Steep Learning Curve Ahead](car.png){fig-align="left"}
+
+## Resources along the way {.smaller}
+
+::: columns
+::: {.column width="50%"}
+[![](oreilly.jpg){width="150"}](https://r4ds.hadley.nz/)
+
+[![](chatgpt.jpg){width="100"}](https://chatgpt.com/)
+
+[![](copilot.png){width="200"}](https://copilot.microsoft.com/)
+:::
+
+::: {.column width="50%"}
+[![](google.jpg){width="70"}](google.com)
+
+[![](stackoverflow.png){width="150"}](https://stackoverflow.com/)
+
+[![](datacamp.png){width="150"}](https://www.datacamp.com/)
+:::
+:::
+
+## How will we get there? {.smaller}
+
+![](schedule.png)
+
+## Examples of R? {.smaller}
+
+::: columns
+::: {.column width="50%"}
+[![](dashboardexample.png){fig-align="left" width="469"}](https://jjallaire.shinyapps.io/shiny-crandash/)
+
+![](eVa.png){fig-align="left" width="467"}
+:::
+
+::: {.column width="50%"}
+[![](Rresume.png){fig-align="left" width="386"}](https://towardsdatascience.com/create-your-resume-with-pagedown-package-in-r-123ca6310d52)
+:::
+:::
+
+## R can be a calculator {.smaller}
+
+R can be used to do basic math...
+
+. . .
+
+``` r
+1 + 2
+```
+
+. . .
+
+```{r}
+1 + 2
+```
+
+. . .
+
+Calculations follow **PEMDAS** order of operations: **P**arenthesis, **E**xponents, **M**ultiplication, **D**ivision, **A**ddition and **S**ubtraction.
+
+``` r
+3 * 2 + 6
+(3 * 2) + 6
+3 * (2 + 6)
+```
+
+. . .
+
+```{r}
+3 * 2 + 6
+(3 * 2) + 6
+3 * (2 + 6)
+```
+
+## Variables {.smaller}
+
+A variable can store any data type (e.g. numeric, character, date, logical) or object (e.g. functions, vectors, plots).
+
+``` r
+# assign variable using the assignment `<-` operator (preferred)
+x <- 5
+x
+```
+
+```{r}
+# assign variable using the `<-` operator (preferred)
+x <- 5
+x
+```
+
+. . .
+
+``` r
+# assign variable using the `=` operator
+y = 2
+y
+```
+
+```{r}
+# assign variable using the `=` operator
+y = 2
+y
+```
+
+. . .
+
+``` r
+z <- x^y
+```
+
+. . .
+
+```{r}
+z <- x^y
+z
+```
+
+## Variables (continued) {.smaller}
+
+Remove a variable from the environment with the function `rm`.
+
+. . .
+
+``` r
+z
+```
+
+```{r}
+z
+```
+
+. . .
+
+```{r}
+#| echo: true
+rm(z)
+z
+```
+
+## Vectors {.smaller}
+
+A `vector` is a collection of elements [of the same type]{.underline}. Operations can be applied to each element of the vector automatically.
+
+``` r
+my_vector <- c(1, 2, 3, 4, 5)
+my_vector
+```
+
+. . .
+
+```{r}
+my_vector <- c(1, 2, 3, 4, 5)
+my_vector
+```
+
+. . .
+
+``` r
+my_vector * 2
+```
+
+. . .
+
+```{r}
+my_vector * 2
+```
+
+. . .
+
+Generate a sequence using the `:` operator.
+
+``` r
+my_sequence <- -5:15
+```
+
+. . .
+
+```{r}
+my_sequence <- -5:15
+my_sequence
+```
+
+. . .
+
+Create a comparison on a vector.
+
+``` r
+my_sequence <= 10
+```
+
+. . .
+
+```{r}
+my_sequence <= 10
+```
+
+## R vs. RStudio {.smaller}
+
+![](r_rstudio.png)
+
+## RStudio {.smaller}
+
+![](RstudioIDE.png)
+
+## Exercise: Create an R Script {.smaller}
+
+-   Open RStudio
+-   Create an R script called `my_script.R` that:
+    -   Assigns a variable `my_name` with your name
+    -   Assigns a variable `my_number` with your lucky number
+    -   Assigns a variable `my_vector` with a vector of 5 numbers
+    -   Multiplies `my_vector` by `my_number`
+    -   Prints the contents of each variable
+
+## Install an R package {.smaller}
+
+Install new packages: `install.packages("PACKAGE_NAME")`
+
+Use package functions in environment: `library(PACKAGE_NAME)`
+
+*! Notice that installing packages requires the package name in quotes (" or '), but calling the library function does not*
+
+See list of installed packages with `installed.packages`
+
+## Exercise: Install the `swirl` R package
+
+`swirl` is a package with a great collection of interactive R courses.
+
+Install swirl: `install.packages("swirl")`
+
+Bring the package into your environment and install the "R Programming Course":
+
+`library(swirl)`
+
+`install_course("R Programming")`
+
+## Exercise: Run the `swirl` R package
+
+Type
+
+``` r
+swirl()
+```
+
+and select the first lesson, `1: Basic Building Blocks`.
+
+## Knowledge Test
+
+-   What symbol is used to assign a value to a variable?
+
+-   What does `c()` do?
+
+-   How can you quickly bring up help on a function?
+
+-   What is the output of
+
+``` r
+values <- c(5, 10, 100)
+div <- 5
+
+result <- values / div
+result
+```
+
+. . .
+
+```{r}
+values <- c(5, 10, 100)
+div <- 5
+
+result <- values / div
+result
+```
+
+## Data Types {.smaller}
+
+4 main types: `numeric`, `character`, Date/POSIXct, and `logical`
+
+| Data Type                 | Description                                    | Examples                                         |
+|------------------|---------------------------|---------------------------|
+| **numeric**               | integers, decimals, positive, negative numbers | 500, 3.4, -6, 0                                  |
+| **character (or factor)** | text data; factor data types have "levels"     | "Hello world", c("agree", "disagree", "neutral") |
+
+## Data Types (continued) {.smaller}
+
+| Data Type   | Description                                            | Examples                                                 | Helper Functions                                                                |
+|------------------|------------------|------------------|-------------------|
+| **dates**   | date or POSIXct (date & time)                          | "2019-01-25", "June 20 2007", "Fri Sep 16 21:07:56 2022" | `Sys.Date`, `date`, `as.Date`, `format`, functions from the `lubridate` package |
+| **logical** | true or false (true = 1 and false = 0 in numeric form) | 2 == 3, 6 != 5, 2 \< 3                                   | `is.logical`                                                                    |
+
+Reveal the data type of any variable using the `class` function.
+
+``` r
+class(86)
+```
+
+. . .
+
+```{r}
+class(86)
+```
+
+. . .
+
+``` r
+class("Hello DAPT class")
+```
+
+. . .
+
+```{r}
+class("Hello DAPT class")
+```
+
+## Factor Vectors {.smaller}
+
+Factors are vectors used to work with categorical variables and have a known and fixed set of values.
+
+``` r
+months <- c('Mar', 'Feb', 'Jan')
+class(months)
+```
+
+. . .
+
+```{r}
+months <- c('Mar', 'Feb', 'Jan')
+class(months)
+```
+
+. . .
+
+What does it look like if we sort this character vector?
+
+``` r
+sort(months)
+```
+
+. . .
+
+```{r}
+sort(months)
+```
+
+. . .
+
+``` r
+months <- as.factor(months)
+levels(months)
+```
+
+. . .
+
+```{r}
+months <- as.factor(months)
+levels(months)
+```
+
+The **levels** are an attribute of factors that define all possible elements and can define the order.
+
+. . .
+
+``` r
+levels(months) <- c('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
+sort(months)
+```
+
+. . .
+
+```{r}
+levels(months) <- c('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
+sort(months)
+```
+
+## Functions {.smaller}
+
+Functions automate tasks and make code repeatable. So far, we've used several base R functions like `class`, `as.factor`, and `sort`.
+
+Structure:
+
+#### function_name(arguments)
+
+where arguments pass the function the needed information in order to complete the function's task. Note: not all functions need arguments (e.g. `getwd()` )
+
+#### ?function
+
+Get help or documentation on a function using the `?` operator.
+
+## Generative AI {.smaller}
+
+## [![](copilot.png)](https://copilot.microsoft.com/)
+
+<https://copilot.microsoft.com/>
+
+Use VCU student credentials.
+
+## What's next?
+
+-   Data Exploration
+
+-   Data Wrangling
+
+*Happy coding!*
